@@ -1,7 +1,7 @@
 # Computation_Method_for_IS_Research
 
 
-This code is aimed to do some basis of 
+This code is aimed to visualize the frequency spectrums for different action by caculating the fft for each accelerometer log file.
 
 
 Installiation:
