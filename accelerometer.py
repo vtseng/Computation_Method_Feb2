@@ -8,7 +8,7 @@ import os
 
 fileNum = 5
 
-dirPath = 'HMP_Dataset/Walk'
+dirPath = 'HMP_Dataset/Liedown_bed'
 fileList = os.listdir(dirPath)
 
 for i in xrange(fileNum):
@@ -22,6 +22,7 @@ for i in xrange(fileNum):
         samples.append(np.linalg.norm(sample))
         line = walkFile.readline()
 
+    print len(samples)
     walkArray = np.array(samples)
     walkfft = fft(walkArray)
 
@@ -29,11 +30,12 @@ for i in xrange(fileNum):
     for z in walkfft:
         walkMag.append(cmath.polar(z)[0])
 
-    k = range(len(walkMag))
+    f = [(float(k)*32/len(walkMag)) for k in xrange(len(walkMag))]
+    print f
     plt.subplot(fileNum, 1, i)
-    plt.axis([0, 50, 0, 1000])
+    plt.axis([0, 30, 0, 1000])
     #plt.axis([0, 50, 0, max(walkMag)])
-    plt.plot(k, walkMag)
+    plt.plot(f, walkMag)
 plt.show()
 
 
